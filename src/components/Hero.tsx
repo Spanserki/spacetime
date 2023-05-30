@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logoSpacetime from '../assets/logo-spacetime.svg'
+import Link from "next/link";
 
 export default function Hero() {
     return (
@@ -11,23 +12,24 @@ export default function Hero() {
                     Colecione momentos marcantes da sua jornada e compartilhe (se quiser) com o mundo!
                 </p>
             </div>
-            <a href=""
+            <Link
+                href="/memories/new"
                 className="
-          inline-block
-          rounded-full
-          bg-green-500
-          px-5 
-          py-3
-          font-alt
-          text-sm
-          uppercase
-          leading-none
-          text-black
-          transition-colors
-          hover:bg-green-700
+                inline-block
+                rounded-full
+                bg-green-500
+                px-5 
+                py-3
+                font-alt
+                text-sm   
+                uppercase
+                leading-none
+                text-black
+                transition-colors
+                hover:bg-green-700
           ">
                 CADASTRAR LEMBRANçA
-            </a>
+            </Link>
         </div>
     )
 }
