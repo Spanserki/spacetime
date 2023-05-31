@@ -13,7 +13,7 @@ export default function Hero() {
                 </p>
             </div>
             <Link
-                href="/memories/new"
+                href="/memorias/nova-memoria"
                 className="
                 inline-block
                 rounded-full
