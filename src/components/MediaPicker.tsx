@@ -3,14 +3,14 @@
 import { ChangeEvent, useState } from "react"
 
 export function MediaPicker() {
-    const [preview, setPreview] = useState<string[]>([])
+    const [preview, setPreview] = useState<string | null>(null)
     function onFileSelected(event: ChangeEvent<HTMLInputElement>) {
         const { files } = event.target
         if (!files) {
             return
         }
         const previuUrl = URL.createObjectURL(files[0])
-        setPreview(previusState => [...previusState, previuUrl])
+        setPreview(previuUrl)
     }
     return (
         <div className="flex py-2 overflow-x-auto">
@@ -23,16 +23,11 @@ export function MediaPicker() {
                 className="invisible h-0 w-0"
             />
             {!!preview && (
-                preview.map(img => {
-                    return (
-                        <img
-                            key={img}
-                            src={img}
-                            alt=""
-                            className="aspect-video w-32 rounded-lg object-cover mr-2 bg-gray-600"
-                        />
-                    )
-                })
+                <img
+                    src={preview}
+                    alt=""
+                    className="aspect-video w-96 rounded-lg object-cover mr-2 bg-gray-600"
+                />
             )}
         </div>
     )

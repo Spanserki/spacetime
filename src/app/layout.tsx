@@ -38,7 +38,7 @@ export default function RootLayout({
               Developed by SS digital agency 🚀
             </div>
           </div>
-          <div className='flex flex-1 px-10 py-16'>
+          <div className='flex flex-1 flex-col px-10 py-16 gap-6 h-screen overflow-y-auto'>
             {children}
           </div>
         </main>

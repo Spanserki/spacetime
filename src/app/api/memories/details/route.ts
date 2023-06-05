@@ -1,11 +1,12 @@
 import { NextRequest } from "next/server";
 import { prisma } from "../../../../lib/prisma";
 
-export async function GET(req: NextRequest, params) {
-    const { slug } = params;
+export async function GET(req: NextRequest) {
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get('id')
     const memories = await prisma.memory.findUnique({
         where: {
-            id: String(slug)
+            id: String(id)
         },
     })
     if (!memories) {

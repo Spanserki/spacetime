@@ -1,14 +1,31 @@
 'use client'
 
+import { api } from "@/lib/api";
 import { Camera } from "lucide-react";
-import { MediaPicker } from "./MediaPicker";
 import { FormEvent } from "react";
+import { MediaPicker } from "./MediaPicker";
+import { useRouter } from "next/navigation";
 
-export default function NewMemoryForm() {
-    function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
+export function NewMemoryForm() {
+    const router = useRouter();
+    async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const formData = new FormData(event.currentTarget)
-        console.log(Array.from(formData.entries()))
+        try {
+            const formData = new FormData(event.currentTarget);
+            const fileToUpload: any = formData.get('coverUrl')
+            formData.append('file', fileToUpload)
+            const isPublic = formData.get('isPublic')
+            const content = formData.get('content')
+            // const { data } = await api.post('/upload', { formData })
+            await api.post('/memories', {
+                coverUrl: 'url',
+                content,
+                isPublic
+            })
+            router.push('/')
+        } catch (error) {
+            console.log('Error!')
+        }
     }
     return (
         <form
@@ -31,7 +48,6 @@ export default function NewMemoryForm() {
                             type="checkbox"
                             name="isPublic"
                             id="isPublic"
-                            value='true'
                             className="h-4 w-4 rounded border-gray-400 bg-gray-700 text-purple-500 focus:ring-transparent"
                         />
                         Tornar memória pública

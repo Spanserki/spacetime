@@ -3,7 +3,7 @@ import { systemConfigs } from "./utils/config"
 
 const signIn = `${systemConfigs.UrlGitHubAuth}/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
 
-export function middleware(req: NextRequest) {
+export async function middleware(req: NextRequest) {
     const token = req.cookies.get('token_client_github')?.value
     if (!token) {
         return NextResponse.redirect(signIn, {

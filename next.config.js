@@ -3,7 +3,8 @@ const nextConfig = {
     images: {
         domains: [
             'avatars.githubusercontent.com',
-            'img.freepik.com'
+            'img.freepik.com',
+            'ichef.bbci.co.uk',
         ]
     }
 }
