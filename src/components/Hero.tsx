@@ -26,8 +26,8 @@ export default function Hero() {
                 leading-none
                 text-black
                 transition-colors
-                hover:bg-green-700
-          ">
+                hover:bg-green-700"
+            >
                 CADASTRAR LEMBRANçA
             </Link>
         </div>

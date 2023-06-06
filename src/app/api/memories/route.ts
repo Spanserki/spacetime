@@ -4,7 +4,7 @@ import { getUser } from "@/lib/authCookies";
 
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url)
-    const id = searchParams.get('sub')
+    const id = searchParams.get('id')
     const memories = await prisma.memory.findMany({
         where: {
             user: {

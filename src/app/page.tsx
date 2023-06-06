@@ -12,7 +12,7 @@ export default async function Home() {
   if (!!IsAuthorization) {
     const { sub } = getUser();
     const { data } = await api.get(`/memories`, {
-      params: { sub }
+      params: { id: sub }
     });
     return (
       <Suspense fallback={<Loading />}>

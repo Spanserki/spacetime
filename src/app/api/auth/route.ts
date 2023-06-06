@@ -60,6 +60,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 export async function POST(req: NextRequest) {
     const body = await req.json();
     const { code } = body;
+    console.log(code)
     //Enviamos os parametros criados no oAuth do GitHub
     const accessTokenResponse = await axios.post(`${systemConfigs.UrlGitHubAuth}/access_token`, null, {
         params: {
